@@ -11,7 +11,7 @@ namespace Proyecto_Persona.Abstraciones.Repositorios
 
         Persona Crear(CrearPersonasDTO crearPersonasDTO);
 
-        Persona Actualizar(ActualizarPersonasDTO actualizarPersonasDTO);
+        Persona Actualizar(int id, ActualizarPersonasDTO actualizarPersonasDTO);
 
         void Borrar(int id);
 
