@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Implementaciones\Servicios\" />
-    <Folder Include="Implementaciones\Repositorios\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
