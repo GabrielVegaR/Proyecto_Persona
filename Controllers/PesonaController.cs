@@ -22,10 +22,10 @@ namespace Proyecto_Persona.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPatch]
         public IActionResult Actualizar()
         {
-            var result = "Estas Retornando un Metodo PUT";
+            var result = "Estas Retornando un Metodo Patch";
             return Ok(result);
         }
 
