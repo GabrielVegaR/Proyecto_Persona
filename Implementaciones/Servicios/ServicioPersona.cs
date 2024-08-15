@@ -28,9 +28,13 @@ namespace Proyecto_Persona.Implementaciones.Servicios
             repositorioPersona.Borrar(id);
         }
 
-        public PersonaDTO Crear(CrearPersonasDTO crearPersonasDTO)
+        public PersonaDTO? Crear(CrearPersonasDTO crearPersonasDTO)
         {
             var persona = repositorioPersona.Crear(crearPersonasDTO);
+            if (persona == null)
+            {
+                return null;
+            }
             var personaDTO = ConvertirAPersonaDTO(persona);
 
             return personaDTO;
@@ -50,7 +54,7 @@ namespace Proyecto_Persona.Implementaciones.Servicios
             return personaDTO;
         }
 
-        public PersonaDTO GetById(int id)
+        public PersonaDTO? GetById(int id)
         {
             var persona = repositorioPersona.GetById(id);
 
@@ -89,6 +93,7 @@ namespace Proyecto_Persona.Implementaciones.Servicios
         {
             var personaDTO = new PersonaDTO
             {
+                Id = persona.Id,
                 PrimerNombre = persona.PrimerNombre,
                 SegundoNombre = persona.SegundoNombre,
                 PrimerApellido = persona.PrimerApellido,
@@ -105,7 +110,8 @@ namespace Proyecto_Persona.Implementaciones.Servicios
                 NombrePais = persona.NombrePais,
                 DiaNacimiento = persona.DiaNacimiento,
                 MesNacimiento = persona.MesNacimiento,
-                AñoNacimiento = persona.AñoNacimiento
+                AñoNacimiento = persona.AñoNacimiento,
+                FechaCreacion = persona.FechaCreacion
             };
 
             return personaDTO;

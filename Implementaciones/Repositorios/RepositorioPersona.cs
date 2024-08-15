@@ -40,17 +40,23 @@ namespace Proyecto_Persona.Implementaciones.Repositorios
 
 
             var result = _context.Update(personaActual);
-
+            _context.SaveChanges();
             return result.Entity;
 
         }
 
         public void Borrar(int id)
         {
-            _context.Personas.Remove(GetById(id));
+            var borrar = GetById(id);
+            if (borrar == null)
+            {
+                throw new Exception("El usuario especificado no ha sido encontrado");
+            }
+            _context.Personas.Remove(borrar);
+            _context.SaveChanges();
         }
 
-        public Persona Crear(CrearPersonasDTO crearPersonasDTO)
+        public Persona? Crear(CrearPersonasDTO crearPersonasDTO)
         {
             var persona = new Persona {
                 PrimerNombre = crearPersonasDTO.PrimerNombre,
@@ -69,10 +75,12 @@ namespace Proyecto_Persona.Implementaciones.Repositorios
                 NombrePais = crearPersonasDTO.NombrePais,
                 DiaNacimiento = crearPersonasDTO.DiaNacimiento,
                 MesNacimiento = crearPersonasDTO.MesNacimiento,
-                AñoNacimiento = crearPersonasDTO.AñoNacimiento
+                AñoNacimiento = crearPersonasDTO.AñoNacimiento,
+                FechaCreacion = DateTime.Now
             };
 
             var result = _context.Add(persona);
+            _context.SaveChanges();
             
             return GetById(result.Entity.Id);
         }
@@ -82,9 +90,9 @@ namespace Proyecto_Persona.Implementaciones.Repositorios
             return [.. _context.Personas];
         }
 
-        public Persona GetById(int id)
+        public Persona? GetById(int id)
         {
-            return _context.Personas.Where(p => p.Id == id).First();
+            return _context.Personas.Where(p => p.Id == id).FirstOrDefault();
         }
     }
 }
