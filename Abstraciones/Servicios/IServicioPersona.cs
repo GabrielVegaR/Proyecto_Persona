@@ -7,9 +7,9 @@ namespace Proyecto_Persona.Abstraciones.Servicios
     {
         List<PersonaDTO> Get();
 
-        PersonaDTO GetById(int id);
+        PersonaDTO? GetById(int id);
 
-        PersonaDTO Crear(CrearPersonasDTO crearPersonasDTO);
+        PersonaDTO? Crear(CrearPersonasDTO crearPersonasDTO);
 
         PersonaDTO Actualizar(int id, ActualizarPersonasDTO actualizarPersonasDTO);
 

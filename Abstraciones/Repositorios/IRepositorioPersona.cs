@@ -7,9 +7,9 @@ namespace Proyecto_Persona.Abstraciones.Repositorios
     {
         List<Persona> Get();
 
-        Persona GetById(int id);
+        Persona? GetById(int id);
 
-        Persona Crear(CrearPersonasDTO crearPersonasDTO);
+        Persona? Crear(CrearPersonasDTO crearPersonasDTO);
 
         Persona Actualizar(int id, ActualizarPersonasDTO actualizarPersonasDTO);
 
