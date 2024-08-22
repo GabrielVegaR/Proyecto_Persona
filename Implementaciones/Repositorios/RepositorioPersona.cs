@@ -60,7 +60,7 @@ namespace Proyecto_Persona.Implementaciones.Repositorios
         {
             var persona = new Persona {
                 PrimerNombre = crearPersonasDTO.PrimerNombre,
-                SegundoNombre = crearPersonasDTO.PrimerNombre.ToString(),
+                SegundoNombre = crearPersonasDTO.SegundoNombre?.ToString() ?? "",
                 PrimerApellido = crearPersonasDTO.PrimerApellido.ToString(),
                 SegundoApellido = crearPersonasDTO.SegundoApellido.ToString(),
                 Email = crearPersonasDTO.Email,
