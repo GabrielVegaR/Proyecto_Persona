@@ -9,9 +9,9 @@
         public string Email { get; set; } = null!;
         public string TipoDocumento { get; set; } = null!;
         public string NumDocumento { get; set; } = null!;
-        public int CodigoArea { get; set; }
-        public int CodigoPais { get; set; }
-        public int Telefono { get; set; }
+        public string CodigoArea { get; set; }
+        public string CodigoPais { get; set; }
+        public string Telefono { get; set; }
         public string NumCasa { get; set; } = null!;
         public string NombreCalle { get; set; } = null!;
         public string NombreCiudad { get; set; } = null!;
