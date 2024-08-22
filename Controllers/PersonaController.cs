@@ -35,22 +35,21 @@ namespace Proyecto_Persona.Controllers
             return Ok(create);
         }
 
-        [HttpPatch]
+        [HttpPut("{id}")]
         public IActionResult Actualizar(int id, ActualizarPersonasDTO actualizarPersonas)
-        {
-            
+        {           
             var update = servicioPersona.Actualizar(id, actualizarPersonas);
             return Ok(update);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Borrar(int id)
         {
             servicioPersona.Borrar(id);
             return Ok();
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var persona = servicioPersona.GetById(id);
