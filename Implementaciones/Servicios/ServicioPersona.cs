@@ -63,54 +63,44 @@ namespace Proyecto_Persona.Implementaciones.Servicios
             return personaDTO;
         }
 
-        public Persona ConvertirAPersona(PersonaDTO personaDTO)
-        {
-            var persona = new Persona
-            {
-                PrimerNombre = personaDTO.PrimerNombre,
-                SegundoNombre = personaDTO.SegundoNombre,
-                PrimerApellido = personaDTO.PrimerApellido,
-                SegundoApellido = personaDTO.SegundoApellido,
-                Email = personaDTO.Email,
-                TipoDocumento = personaDTO.TipoDocumento,
-                NumDocumento = personaDTO.NumDocumento,
-                CodigoArea = personaDTO.CodigoArea,
-                CodigoPais = personaDTO.CodigoPais,
-                Telefono = personaDTO.Telefono,
-                NumCasa = personaDTO.NumCasa,
-                NombreCalle = personaDTO.NombreCalle,
-                NombreCiudad = personaDTO.NombreCiudad,
-                NombrePais = personaDTO.NombrePais,
-                DiaNacimiento = personaDTO.DiaNacimiento,
-                MesNacimiento = personaDTO.MesNacimiento,
-                AñoNacimiento = personaDTO.AñoNacimiento
-            };
+        //public Persona ConvertirAPersona(PersonaDTO personaDTO)
+        //{
+        //    var persona = new Persona
+        //    {
+        //        NombreCompleto = personaDTO.NombreCompleto,
+        //        SegundoNombre = personaDTO.SegundoNombre,
+        //        PrimerApellido = personaDTO.PrimerApellido,
+        //        SegundoApellido = personaDTO.SegundoApellido,
+        //        Email = personaDTO.Email,
+        //        TipoDocumento = personaDTO.TipoDocumento,
+        //        NumDocumento = personaDTO.NumDocumento,
+        //        CodigoArea = personaDTO.CodigoArea,
+        //        CodigoPais = personaDTO.CodigoPais,
+        //        Telefono = personaDTO.Telefono,
+        //        NumCasa = personaDTO.NumCasa,
+        //        NombreCalle = personaDTO.NombreCalle,
+        //        NombreCiudad = personaDTO.NombreCiudad,
+        //        NombrePais = personaDTO.NombrePais,
+        //        DiaNacimiento = personaDTO.DiaNacimiento,
+        //        MesNacimiento = personaDTO.MesNacimiento,
+        //        AñoNacimiento = personaDTO.AñoNacimiento
+        //    };
 
-            return persona;
-        }
+        //    return persona;
+        //}
 
         public PersonaDTO ConvertirAPersonaDTO(Persona persona)
         {
             var personaDTO = new PersonaDTO
             {
                 Id = persona.Id,
-                PrimerNombre = persona.PrimerNombre,
-                SegundoNombre = persona.SegundoNombre,
-                PrimerApellido = persona.PrimerApellido,
-                SegundoApellido = persona.SegundoApellido,
+                NombreCompleto = $"{persona.PrimerNombre} {persona.SegundoNombre?.Trim()} {persona.PrimerApellido} {persona.SegundoApellido}".Trim(),
                 Email = persona.Email,
                 TipoDocumento = persona.TipoDocumento,
                 NumDocumento = persona.NumDocumento,
-                CodigoArea = persona.CodigoArea,
-                CodigoPais = persona.CodigoPais,
-                Telefono = persona.Telefono,
-                NumCasa = persona.NumCasa,
-                NombreCalle = persona.NombreCalle,
-                NombreCiudad = persona.NombreCiudad,
-                NombrePais = persona.NombrePais,
-                DiaNacimiento = persona.DiaNacimiento,
-                MesNacimiento = persona.MesNacimiento,
-                AñoNacimiento = persona.AñoNacimiento,
+                Telefono = persona.CodigoArea + persona.CodigoPais + persona.Telefono,
+                Direccion = persona.NumCasa + ", " + persona.NombreCalle + ", " + persona.NombreCiudad + ", " + persona.NombrePais,
+                Edad = DateTime.Now.Year - persona.AñoNacimiento,                
                 FechaCreacion = persona.FechaCreacion
             };
 
