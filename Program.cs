@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Persona.Abstraciones.Repositorios;
 using Proyecto_Persona.Abstraciones.Servicios;
@@ -26,6 +25,22 @@ namespace Proyecto_Persona
             builder.Services.AddScoped<IRepositorioPersona, RepositorioPersona>();
             builder.Services.AddScoped<IServicioPersona, ServicioPersona>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("PermitirTodo",
+                    policy =>
+                    {
+                        policy
+                        //.WithOrigins("http://localhost:5173")
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                        //.WithMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
+                        //.WithExposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Access-Control-Allow-Methods");
+
+                    });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -36,6 +51,8 @@ namespace Proyecto_Persona
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("PermitirTodo");
 
             app.UseAuthorization();
 
